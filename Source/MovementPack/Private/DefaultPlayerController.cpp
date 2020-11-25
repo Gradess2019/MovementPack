@@ -3,7 +3,8 @@
 
 #include "DefaultPlayerController.h"
 
-#include "MovementPack/Interfaces/InputControllable.h"
+
+#include "Interfaces/InputControllable.h"
 
 ADefaultPlayerController::ADefaultPlayerController(const FObjectInitializer& ObjectInitializer)
     : APlayerController(ObjectInitializer)
