@@ -46,4 +46,7 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Movement Pack")
 	void Interact();
 	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Movement Pack")
+	void Space();
+	
 };

@@ -44,6 +44,9 @@ protected:
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Action Names")
     FName InteractActionName;
+    
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Action Names")
+    FName SpaceActionName;
 
     UFUNCTION()
     void MoveForward(const float AxisValue);
@@ -68,6 +71,9 @@ protected:
     
     UFUNCTION()
     void Interact();
+    
+    UFUNCTION()
+    void Space();
 
     virtual void SetupInputComponent() override;
 

@@ -18,6 +18,7 @@ ADefaultPlayerController::ADefaultPlayerController(const FObjectInitializer& Obj
 
     FireActionName = "Fire";
     InteractActionName = "Interact";
+    SpaceActionName = "Jump";
 }
 
 void ADefaultPlayerController::SetupInputComponent()
@@ -33,6 +34,8 @@ void ADefaultPlayerController::SetupInputComponent()
 
     InputComponent->BindAction(FireActionName, IE_Released, this, &ADefaultPlayerController::Fire);
     InputComponent->BindAction(InteractActionName, IE_Released, this, &ADefaultPlayerController::Interact);
+    
+    InputComponent->BindAction(SpaceActionName, IE_Pressed, this, &ADefaultPlayerController::Space);
 }
 
 void ADefaultPlayerController::MoveForward(const float AxisValue)
@@ -81,6 +84,12 @@ void ADefaultPlayerController::Interact()
 {
     if (!IsValidPawn()) { return; }
     IInputControllable::Execute_Interact(GetPawn());
+}
+
+void ADefaultPlayerController::Space()
+{
+    if (!IsValidPawn()) { return; }
+    IInputControllable::Execute_Space(GetPawn());
 }
 
 bool ADefaultPlayerController::IsValidPawn() const
