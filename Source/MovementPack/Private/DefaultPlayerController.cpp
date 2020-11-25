@@ -3,16 +3,27 @@
 
 #include "DefaultPlayerController.h"
 
+ADefaultPlayerController::ADefaultPlayerController(const FObjectInitializer& ObjectInitializer)
+    : APlayerController(ObjectInitializer)
+{
+    ForwardAxisName = "MoveForward";
+    RightAxisName = "MoveRight";
+    UpdAxisName = "MoveUp";
+    TurnAroundAxisName = "TurnAround";
+    LookUpAxisName = "LookUp";
+    ScrollAxisName = "Scroll";
+}
+
 void ADefaultPlayerController::SetupInputComponent()
 {
     Super::SetupInputComponent();
 
-    InputComponent->BindAxis("MoveForward", this, &ADefaultPlayerController::MoveForward);
-    InputComponent->BindAxis("MoveRight", this, &ADefaultPlayerController::MoveRight);
-    InputComponent->BindAxis("MoveUp", this, &ADefaultPlayerController::MoveUp);
-    InputComponent->BindAxis("TurnAround", this, &ADefaultPlayerController::TurnAround);
-    InputComponent->BindAxis("LookUp", this, &ADefaultPlayerController::LookUp);
-    InputComponent->BindAxis("Scroll", this, &ADefaultPlayerController::Scroll);
+    InputComponent->BindAxis(ForwardAxisName, this, &ADefaultPlayerController::MoveForward);
+    InputComponent->BindAxis(RightAxisName, this, &ADefaultPlayerController::MoveRight);
+    InputComponent->BindAxis(UpdAxisName, this, &ADefaultPlayerController::MoveUp);
+    InputComponent->BindAxis(TurnAroundAxisName, this, &ADefaultPlayerController::TurnAround);
+    InputComponent->BindAxis(LookUpAxisName, this, &ADefaultPlayerController::LookUp);
+    InputComponent->BindAxis(ScrollAxisName, this, &ADefaultPlayerController::Scroll);
 }
 
 void ADefaultPlayerController::MoveForward(const float AxisValue)

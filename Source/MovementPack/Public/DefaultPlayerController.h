@@ -15,8 +15,29 @@ class MOVEMENTPACK_API ADefaultPlayerController : public APlayerController
     GENERATED_BODY()
 
 
+public:
+    ADefaultPlayerController(const FObjectInitializer& ObjectInitializer);
+
 protected:
 
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
+    FName ForwardAxisName;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
+    FName RightAxisName;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
+    FName UpdAxisName;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
+    FName TurnAroundAxisName;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
+    FName LookUpAxisName;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
+    FName ScrollAxisName;
+    
     UFUNCTION()
     void MoveForward(const float AxisValue);
 
