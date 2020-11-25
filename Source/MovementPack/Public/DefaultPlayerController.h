@@ -39,6 +39,12 @@ protected:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
     FName ScrollAxisName;
 
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Action Names")
+    FName FireActionName;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Action Names")
+    FName InteractActionName;
+
     UFUNCTION()
     void MoveForward(const float AxisValue);
 
@@ -56,6 +62,12 @@ protected:
 
     UFUNCTION()
     void Scroll(const float AxisValue);
+
+    UFUNCTION()
+    void Fire();
+    
+    UFUNCTION()
+    void Interact();
 
     virtual void SetupInputComponent() override;
 

@@ -40,4 +40,10 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Movement Pack")
 	void AddScroll(const float AxisValue);
 	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Movement Pack")
+	void Fire();
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Movement Pack")
+	void Interact();
+	
 };

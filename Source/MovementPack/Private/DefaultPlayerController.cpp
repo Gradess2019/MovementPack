@@ -14,6 +14,9 @@ ADefaultPlayerController::ADefaultPlayerController(const FObjectInitializer& Obj
     TurnAroundAxisName = "TurnAround";
     LookUpAxisName = "LookUp";
     ScrollAxisName = "Scroll";
+
+    FireActionName = "Fire";
+    InteractActionName = "Interact";
 }
 
 void ADefaultPlayerController::SetupInputComponent()
@@ -26,6 +29,9 @@ void ADefaultPlayerController::SetupInputComponent()
     InputComponent->BindAxis(TurnAroundAxisName, this, &ADefaultPlayerController::TurnAround);
     InputComponent->BindAxis(LookUpAxisName, this, &ADefaultPlayerController::LookUp);
     InputComponent->BindAxis(ScrollAxisName, this, &ADefaultPlayerController::Scroll);
+
+    InputComponent->BindAction(FireActionName, IE_Released, this, &ADefaultPlayerController::Fire);
+    InputComponent->BindAction(InteractActionName, IE_Released, this, &ADefaultPlayerController::Interact);
 }
 
 void ADefaultPlayerController::MoveForward(const float AxisValue)
@@ -62,6 +68,18 @@ void ADefaultPlayerController::Scroll(const float AxisValue)
 {
     if (!IsValidPawn()) { return; }
     IInputControllable::Execute_AddScroll(GetPawn(), AxisValue);
+}
+
+void ADefaultPlayerController::Fire()
+{
+    if (!IsValidPawn()) { return; }
+    IInputControllable::Execute_Fire(GetPawn());
+}
+
+void ADefaultPlayerController::Interact()
+{
+    if (!IsValidPawn()) { return; }
+    IInputControllable::Execute_Interact(GetPawn());
 }
 
 bool ADefaultPlayerController::IsValidPawn() const
