@@ -20,6 +20,7 @@ public:
 
 protected:
 
+    // Input
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
     FName ForwardAxisName;
 
@@ -37,7 +38,7 @@ protected:
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
     FName ScrollAxisName;
-    
+
     UFUNCTION()
     void MoveForward(const float AxisValue);
 
@@ -57,4 +58,8 @@ protected:
     void Scroll(const float AxisValue);
 
     virtual void SetupInputComponent() override;
+
+    UFUNCTION(BlueprintCallable, Category = "Movement Pack | Controller")
+    bool IsValidPawn() const;
+
 };

@@ -3,6 +3,8 @@
 
 #include "DefaultPlayerController.h"
 
+#include "MovementPack/Interfaces/InputControllable.h"
+
 ADefaultPlayerController::ADefaultPlayerController(const FObjectInitializer& ObjectInitializer)
     : APlayerController(ObjectInitializer)
 {
@@ -28,36 +30,42 @@ void ADefaultPlayerController::SetupInputComponent()
 
 void ADefaultPlayerController::MoveForward(const float AxisValue)
 {
-    if (AxisValue == 0) { return; }
-    UE_LOG(LogTemp, Warning, TEXT("MoveForward"));
+    if (!IsValidPawn()) { return; }
+    IInputControllable::Execute_AddForward(GetPawn(), AxisValue);
 }
 
 void ADefaultPlayerController::MoveRight(const float AxisValue)
 {
-    if (AxisValue == 0) { return; }
-    UE_LOG(LogTemp, Warning, TEXT("MoveRight"));
+    if (!IsValidPawn()) { return; }
+    IInputControllable::Execute_AddRight(GetPawn(), AxisValue);
 }
 
 void ADefaultPlayerController::MoveUp(const float AxisValue)
 {
-    if (AxisValue == 0) { return; }
-    UE_LOG(LogTemp, Warning, TEXT("MoveUp"));
+    if (!IsValidPawn()) return;
+    IInputControllable::Execute_AddUp(GetPawn(), AxisValue);
 }
 
 void ADefaultPlayerController::TurnAround(const float AxisValue)
 {
-    if (AxisValue == 0) { return; }
-    UE_LOG(LogTemp, Warning, TEXT("TurnAround"));
+    if (!IsValidPawn()) { return; }
+    IInputControllable::Execute_AddTurnAround(GetPawn(), AxisValue);
 }
 
 void ADefaultPlayerController::LookUp(const float AxisValue)
 {
-    if (AxisValue == 0) { return; }
-    UE_LOG(LogTemp, Warning, TEXT("LookUp"));
+    if (!IsValidPawn()) { return; }
+    IInputControllable::Execute_AddLookUp(GetPawn(), AxisValue);
 }
 
 void ADefaultPlayerController::Scroll(const float AxisValue)
 {
-    if (AxisValue == 0) { return; }
-    UE_LOG(LogTemp, Warning, TEXT("Scroll"));
+    if (!IsValidPawn()) { return; }
+    IInputControllable::Execute_AddScroll(GetPawn(), AxisValue);
+}
+
+bool ADefaultPlayerController::IsValidPawn() const
+{
+    const auto CurrentPawn = GetPawn();
+    return IsValid(CurrentPawn) && CurrentPawn->GetClass()->ImplementsInterface(UInputControllable::StaticClass());
 }
