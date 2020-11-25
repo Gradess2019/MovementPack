@@ -35,7 +35,7 @@ protected:
 
 	/** Axis mapping name for up movement */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")
-	FName UpdAxisName;
+	FName UpAxisName;
 
 	/** Axis mapping name for yaw rotation (e.g. using Mouse X) */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Input | Axis Names")

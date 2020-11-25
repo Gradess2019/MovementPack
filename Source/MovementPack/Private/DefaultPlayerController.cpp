@@ -1,9 +1,7 @@
 // Gradess & Novaturion Company. All rights reserved.
 
-
+// ReSharper disable CppMemberFunctionMayBeConst
 #include "DefaultPlayerController.h"
-
-
 #include "Interfaces/InputControllable.h"
 
 ADefaultPlayerController::ADefaultPlayerController(const FObjectInitializer& ObjectInitializer)
@@ -11,7 +9,7 @@ ADefaultPlayerController::ADefaultPlayerController(const FObjectInitializer& Obj
 {
 	ForwardAxisName = "MoveForward";
 	RightAxisName = "MoveRight";
-	UpdAxisName = "MoveUp";
+	UpAxisName = "MoveUp";
 	TurnAroundAxisName = "TurnAround";
 	LookUpAxisName = "LookUp";
 	ScrollAxisName = "Scroll";
@@ -27,7 +25,7 @@ void ADefaultPlayerController::SetupInputComponent()
 
 	InputComponent->BindAxis(ForwardAxisName, this, &ADefaultPlayerController::MoveForward);
 	InputComponent->BindAxis(RightAxisName, this, &ADefaultPlayerController::MoveRight);
-	InputComponent->BindAxis(UpdAxisName, this, &ADefaultPlayerController::MoveUp);
+	InputComponent->BindAxis(UpAxisName, this, &ADefaultPlayerController::MoveUp);
 	InputComponent->BindAxis(TurnAroundAxisName, this, &ADefaultPlayerController::TurnAround);
 	InputComponent->BindAxis(LookUpAxisName, this, &ADefaultPlayerController::LookUp);
 	InputComponent->BindAxis(ScrollAxisName, this, &ADefaultPlayerController::Scroll);
