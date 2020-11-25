@@ -7,7 +7,7 @@
 #include "DefaultGameMode.generated.h"
 
 /**
- * 
+ * Default GameMode that is ready to go. Just put it in World Settings
  */
 UCLASS()
 class MOVEMENTPACK_API ADefaultGameMode : public AGameModeBase

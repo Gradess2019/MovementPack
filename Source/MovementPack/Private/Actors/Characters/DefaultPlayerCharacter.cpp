@@ -2,19 +2,6 @@
 
 #include "Actors/Characters/DefaultPlayerCharacter.h"
 
-ADefaultPlayerCharacter::ADefaultPlayerCharacter()
-{
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
-}
-
-void ADefaultPlayerCharacter::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
 void ADefaultPlayerCharacter::AddForward_Implementation(const float AxisValue)
 {
 	AddMovementInput(GetActorForwardVector(), AxisValue);

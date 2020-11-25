@@ -16,5 +16,5 @@ void FMovementPackModule::ShutdownModule()
 }
 
 #undef LOCTEXT_NAMESPACE
-	
+
 IMPLEMENT_MODULE(FMovementPackModule, MovementPack)
